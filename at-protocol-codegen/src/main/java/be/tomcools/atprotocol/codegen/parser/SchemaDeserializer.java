@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
+
 import java.io.IOException;
 
 public class SchemaDeserializer extends JsonDeserializer<Schema> {

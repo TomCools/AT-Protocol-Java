@@ -1,5 +1,6 @@
 package be.tomcools.atprotocol.codegen.parser;
 
+import be.tomcools.atprotocol.codegen.errors.ATPCodeGenException;
 import be.tomcools.atprotocol.codegen.lexicon.LexiconDoc;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,7 +18,7 @@ public class LexiconParser {
 		try {
 			return mapper.readValue(json, LexiconDoc.class);
 		} catch (JsonProcessingException e) {
-			throw new RuntimeException(e);
+			throw new ATPCodeGenException("Error while reading input file to JSON", e);
 		}
 	}
 

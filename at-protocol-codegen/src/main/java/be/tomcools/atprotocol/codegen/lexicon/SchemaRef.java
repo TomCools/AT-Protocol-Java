@@ -9,4 +9,8 @@ public final class SchemaRef implements Schema {
 	public SchemaRef(String reference) {
 		this.reference = reference;
 	}
+
+	public String getReference() {
+		return reference;
+	}
 }

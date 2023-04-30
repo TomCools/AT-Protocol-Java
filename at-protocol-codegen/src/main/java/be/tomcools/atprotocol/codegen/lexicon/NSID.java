@@ -1,11 +1,12 @@
 package be.tomcools.atprotocol.codegen.lexicon;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
-import org.apache.commons.lang3.StringUtils;
 
 /*
    This is a NameSpaced ID (NSID for short)

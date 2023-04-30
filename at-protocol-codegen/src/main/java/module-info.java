@@ -1,7 +1,8 @@
-import be.tomcools.atprotocol.codegen.ATProtocolCodeGeneratorImpl;
+import be.tomcools.atprotocol.codegen.ATProtocolCodeGenerator;
+import be.tomcools.atprotocol.codegen.generator.ATProtocolCodeGeneratorImpl;
 
 module be.tomcools.atprotocol.codegen {
-	exports be.tomcools.atprotocol.codegen.api;
+	exports be.tomcools.atprotocol.codegen;
 
 	requires com.github.wnameless.json.flattener;
 	requires com.fasterxml.jackson.core;
@@ -16,5 +17,5 @@ module be.tomcools.atprotocol.codegen {
 	opens be.tomcools.atprotocol.codegen.lexicon.types to com.fasterxml.jackson.databind;
 	opens be.tomcools.atprotocol.codegen.parser to com.fasterxml.jackson.databind;
 
-	provides be.tomcools.atprotocol.codegen.api.ATProtocolCodeGenerator with ATProtocolCodeGeneratorImpl;
+	provides ATProtocolCodeGenerator with ATProtocolCodeGeneratorImpl;
 }

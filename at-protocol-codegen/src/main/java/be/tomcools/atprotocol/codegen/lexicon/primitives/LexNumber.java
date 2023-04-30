@@ -1,6 +1,7 @@
 package be.tomcools.atprotocol.codegen.lexicon.primitives;
 
 import be.tomcools.atprotocol.codegen.lexicon.LexType;
+
 import java.util.List;
 
 public class LexNumber implements LexType {

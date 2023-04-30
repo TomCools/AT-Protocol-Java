@@ -1,12 +1,15 @@
 package be.tomcools.lexicongenerator;
 
-import be.tomcools.atprotocol.codegen.ATProtocolCodeGeneratorImpl;
+import be.tomcools.atprotocol.codegen.ATPCodeGenConfiguration;
+import be.tomcools.atprotocol.codegen.errors.ATPCodeGenException;
+import be.tomcools.atprotocol.codegen.generator.ATProtocolCodeGeneratorImpl;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.tools.*;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
@@ -18,18 +21,65 @@ class ATProtocolCodeGeneratorImplTest {
 	ATProtocolCodeGeneratorImpl sut = new ATProtocolCodeGeneratorImpl();
 
 	@Test
-	public void testParserWithAllLexiconFiles() throws IOException {
-		sut.generate(lexiconFileTestDirectory(), tempDir);
+	public void givenDirectoryWithCompatibleLexicons_afterCreatingJavaSources_shouldCompileSuccessfully()
+			throws IOException {
+		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(lexiconFileTestDirectory())
+				.withOutputDirectory(tempDir).build();
+
+		sut.generate(configuration);
 
 		testCompilation();
 	}
 
 	@Test
-	public void createClassesForSimpleDefinition() throws IOException {
-		sut.generate(Paths.get("src", "test", "resources", "lexicons", "com.atproto.label.defs.json").toFile(),
-				tempDir);
+	public void givenLexiconWithSingleObjectDeclaration_afterCreatingJavaSources_shouldCompileSuccessfully()
+			throws IOException {
+		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.label.defs.json").toFile();
+
+		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(singleFile)
+				.withOutputDirectory(tempDir).build();
+
+		sut.generate(configuration);
 
 		testCompilation();
+	}
+
+	@Test
+	public void givenLexiconWithProcedureDeclaration_afterCreatingJavaSources_shouldCompileSuccessfully()
+			throws IOException {
+		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.server.createSession.json").toFile();
+
+		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(singleFile)
+				.withOutputDirectory(tempDir).build();
+
+		sut.generate(configuration);
+
+		testCompilation();
+	}
+
+	@Test
+	public void givenLexiconWithProcedureDeclarationReferenced_afterCreatingJavaSources_shouldCompileSuccessfully()
+			throws IOException {
+		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.account.create.json").toFile();
+
+		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(singleFile)
+				.withOutputDirectory(tempDir).build();
+
+		sut.generate(configuration);
+
+		testCompilation();
+	}
+
+	@Test
+	public void givenLexiconWithFaultyReference_shouldFailValidation() throws IOException {
+		var faultyRefPath = Paths.get("src", "test", "resources", "faultyref").toFile();
+
+		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(faultyRefPath)
+				.withOutputDirectory(tempDir).build();
+
+		Assertions.assertThrows(ATPCodeGenException.class, () -> {
+			sut.generate(configuration);
+		});
 	}
 
 	private void testCompilation() throws IOException {

@@ -1,0 +1,19 @@
+{
+  "lexicon": 1,
+  "id": "app.bsky.embed.external",
+  "description": "Document with a reference that does not exist",
+  "defs": {
+    "main": {
+      "type": "object",
+      "required": [
+        "external"
+      ],
+      "properties": {
+        "external": {
+          "type": "ref",
+          "ref": "#DOESNOTEXIST"
+        }
+      }
+    }
+  }
+}
