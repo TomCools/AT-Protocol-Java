@@ -37,6 +37,7 @@ public class ProcedureClassGenerator {
 
 	private void addProcedure(TypeSpec.Builder classfile, ProcedureInDocument procedure) {
 		MethodSpec method = MethodSpec.methodBuilder(procedure.determineMethodName())
+				.addModifiers(Modifier.PUBLIC)
 				.addParameter(determineInputClass(procedure),"input")
 				.returns(determineOutputClass(procedure))
 				.addStatement("return null") //TODO Implement REST CLient :-)
