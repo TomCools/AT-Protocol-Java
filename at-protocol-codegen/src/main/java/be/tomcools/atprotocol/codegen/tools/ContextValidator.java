@@ -4,7 +4,6 @@ import be.tomcools.atprotocol.codegen.errors.ATPCodeGenException;
 import be.tomcools.atprotocol.codegen.generator.GenerationContext;
 import be.tomcools.atprotocol.codegen.generator.GenerationContextFile;
 import be.tomcools.atprotocol.codegen.lexicon.NSID;
-
 import java.util.Map;
 
 public class ContextValidator {

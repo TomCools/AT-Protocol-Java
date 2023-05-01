@@ -6,7 +6,6 @@ import be.tomcools.atprotocol.codegen.errors.ATPCodeGenException;
 import be.tomcools.atprotocol.codegen.parser.LexiconParser;
 import be.tomcools.atprotocol.codegen.tools.ContextValidator;
 import com.github.wnameless.json.flattener.JsonFlattener;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;

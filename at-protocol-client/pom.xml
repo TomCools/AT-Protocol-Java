@@ -30,9 +30,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <sourcePath>D:\projects\bytebuddy-experiment\at-protocol-codegen\src\test\resources\lexicons</sourcePath>
-                </configuration>
             </plugin>
         </plugins>
     </build>

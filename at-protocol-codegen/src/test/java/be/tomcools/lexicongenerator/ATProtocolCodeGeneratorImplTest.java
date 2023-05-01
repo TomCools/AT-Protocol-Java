@@ -47,7 +47,8 @@ class ATProtocolCodeGeneratorImplTest {
 	@Test
 	public void givenLexiconWithProcedureDeclaration_afterCreatingJavaSources_shouldCompileSuccessfully()
 			throws IOException {
-		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.server.createSession.json").toFile();
+		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.server.createSession.json")
+				.toFile();
 
 		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(singleFile)
 				.withOutputDirectory(tempDir).build();
@@ -60,7 +61,8 @@ class ATProtocolCodeGeneratorImplTest {
 	@Test
 	public void givenLexiconWithProcedureDeclarationReferenced_afterCreatingJavaSources_shouldCompileSuccessfully()
 			throws IOException {
-		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.account.create.json").toFile();
+		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.server.createAccount.json")
+				.toFile();
 
 		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(singleFile)
 				.withOutputDirectory(tempDir).build();

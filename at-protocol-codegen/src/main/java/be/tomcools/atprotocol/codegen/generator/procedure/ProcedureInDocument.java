@@ -6,23 +6,24 @@ import be.tomcools.atprotocol.codegen.lexicon.NSID;
 
 public record ProcedureInDocument(LexiconDoc doc, String name, LexXrpcProcedure obj) {
 
-    /**
-     * This method will return the expected package objectKey. Normally this is the
-     * document id. However, if the class objectKey is also the objectKey of the document,
-     * just use the domain.
-     * @return the expected package objectKey
-     */
-    public String determineFQClassName() {
-        NSID identifier = doc.id();
-        return identifier.getDomain();
-    }
+	/**
+	 * This method will return the expected package objectKey. Normally this is the
+	 * document id. However, if the class objectKey is also the objectKey of the
+	 * document, just use the domain.
+	 * 
+	 * @return the expected package objectKey
+	 */
+	public String determineFQClassName() {
+		NSID identifier = doc.id();
+		return identifier.getDomain();
+	}
 
-    /**
-     * @return the expected method name;
-     */
-    public String determineMethodName() {
-        // schema should not be taken into account for the objectKey, so remove it.
-        String[] split = name.replace(".schema", "").split("\\.");
-        return split[split.length - 1];
-    }
+	/**
+	 * @return the expected method name;
+	 */
+	public String determineMethodName() {
+		// schema should not be taken into account for the objectKey, so remove it.
+		String[] split = name.replace(".schema", "").split("\\.");
+		return split[split.length - 1];
+	}
 };

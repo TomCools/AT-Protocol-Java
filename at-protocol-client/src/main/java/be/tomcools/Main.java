@@ -1,10 +1,10 @@
 package be.tomcools;
 
-import com.atproto.server.Server;
+import be.tomcools.atprotocol.client.AtpApi;
 
 // Dogfooding ;)
 public class Main {
-    public static void main(String[] args) {
-        Server s = new Server();
-    }
+	public static void main(String[] args) {
+		AtpApi s = new AtpApi();
+	}
 }

@@ -19,3 +19,17 @@ _Note 2: This is currently a project in buildup. *Use of this code, either from 
 - *at-protocol-client*: A client, which can be used to connect to existing AT-Protocol servers, such as BlueSky Social Media. Mostly used to "Dogfood" the other modules for now.
 
 Todo: Add more information ;)
+
+== Generated Code Guidelines
+
+The link:lexicon-schemas[https://atproto.com/specs/lexicon] determines a couple of different types.
+
+The most important ones are:
+
+- Objects: Generated as POJOs;
+- Query: Generated as Methods on the API class;
+- Procedures: Generated as Methods on the API class;
+
+=== Procedures
+
+com.atproto.server.createSession -> AtpApi.createSession();

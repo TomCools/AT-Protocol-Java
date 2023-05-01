@@ -5,7 +5,6 @@ import be.tomcools.atprotocol.codegen.lexicon.SchemaRef;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
-
 import java.io.IOException;
 
 public class SchemaSerializer extends JsonSerializer<Schema> {

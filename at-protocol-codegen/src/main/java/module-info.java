@@ -9,6 +9,7 @@ module be.tomcools.atprotocol.codegen {
 	requires com.squareup.javapoet;
 	requires org.apache.commons.lang3;
 	requires java.compiler;
+	requires java.net.http;
 	requires com.fasterxml.jackson.annotation;
 	requires com.fasterxml.jackson.databind;
 

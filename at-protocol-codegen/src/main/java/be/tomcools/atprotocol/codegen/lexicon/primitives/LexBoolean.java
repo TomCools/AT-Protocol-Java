@@ -3,7 +3,6 @@ package be.tomcools.atprotocol.codegen.lexicon.primitives;
 import be.tomcools.atprotocol.codegen.lexicon.LexType;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 

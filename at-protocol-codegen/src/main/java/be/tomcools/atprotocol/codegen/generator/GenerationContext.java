@@ -1,7 +1,6 @@
 package be.tomcools.atprotocol.codegen.generator;
 
 import be.tomcools.atprotocol.codegen.lexicon.NSID;
-
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
