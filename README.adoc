@@ -1,0 +1,21 @@
+:linkattrs:
+:project-owner:   tomcools
+:project-name:    AT-Protocol-Java
+
+image::media/banner.png[AT-Protocol-Java]
+
+---
+
+Tools for working with the link:AT-Protocol[https://atproto.com/], new social network technology created by Bluesky.
+
+_Note 1: This repository is not affiliated with the Bluesky PBLLC company. As we are not in control of the specification itself, we can't guarantee that these tools will always be in sync with the specification._
+
+_Note 2: This is currently a project in buildup. *Use of this code, either from dependencies or by directly copying it is at own risk._*
+
+== Artifacts
+
+- *at-protocol-codegen*: Generates Java code from the Lexicon files.
+- *at-protocol-codegen-maven-plugin*: A Maven plugin which will generate the relevant Java Code during a Maven build.
+- *at-protocol-client*: A client, which can be used to connect to existing AT-Protocol servers, such as BlueSky Social Media. Mostly used to "Dogfood" the other modules for now.
+
+Todo: Add more information ;)
