@@ -13,7 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 */
 public class NSID {
 	private final String separator = "\\.";
-	private @JsonValue String content;
+	private final @JsonValue String content;
 
 	public NSID(String content) {
 		this.content = content;

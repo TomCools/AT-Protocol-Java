@@ -7,6 +7,9 @@ import be.tomcools.atprotocol.codegen.generator.procedure.ProcedureMethodGenerat
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.squareup.javapoet.*;
 import java.io.IOException;
+import java.net.http.HttpClient;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.processing.Generated;
 import javax.lang.model.element.Modifier;
 
@@ -18,8 +21,8 @@ public class CodeGen {
 
 	public CodeGen(GenerationContext context) {
 		this.context = context;
-		this.objectClassGenerator = new ObjectClassGenerator();
-		this.procedureMethodGenerator = new ProcedureMethodGenerator();
+		this.objectClassGenerator = new ObjectClassGenerator(context.nameResolver());
+		this.procedureMethodGenerator = new ProcedureMethodGenerator(context.nameResolver());
 	}
 
 	public void generateClasses() {
@@ -58,7 +61,13 @@ public class CodeGen {
 	}
 
 	private static void addHttpClient(TypeSpec.Builder classfile) {
-		classfile.addField(FieldSpec.builder(ClassName.get("java.net.http", "HttpClient"), "httpClient")
-				.addModifiers(Modifier.PRIVATE).initializer("HttpClient.newHttpClient()").build());
+		classfile.addField(FieldSpec.builder(ClassName.get(HttpClient.class), "httpClient")
+				.addModifiers(Modifier.PRIVATE)
+				.initializer("HttpClient.newHttpClient()").build());
+		classfile.addField(FieldSpec.builder(ParameterizedTypeName.get(Map.class, String.class,String.class), "requestHeaders")
+				.addModifiers(Modifier.PRIVATE)
+				.initializer(
+						CodeBlock.builder().add("new $T<>()", ClassName.get(HashMap.class)).build())
+				.build());
 	}
 }

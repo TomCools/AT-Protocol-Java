@@ -30,6 +30,6 @@ The most important ones are:
 - Query: Generated as Methods on the API class;
 - Procedures: Generated as Methods on the API class;
 
-=== Procedures
+=== Name Resolving
 
-com.atproto.server.createSession -> AtpApi.createSession();
+The solving of names should be made configurable.

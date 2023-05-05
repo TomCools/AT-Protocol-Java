@@ -32,6 +32,19 @@ class ATProtocolCodeGeneratorImplTest {
 	}
 
 	@Test
+	public void givenLexiconWithSingleObjectDeclarationInMain_afterCreatingJavaSources_shouldCompileSuccessfully()
+			throws IOException {
+		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.repo.strongRef.json").toFile();
+
+		ATPCodeGenConfiguration configuration = ATPCodeGenConfiguration.builder().withSource(singleFile)
+				.withOutputDirectory(tempDir).build();
+
+		sut.generate(configuration);
+
+		testCompilation();
+	}
+
+	@Test
 	public void givenLexiconWithSingleObjectDeclaration_afterCreatingJavaSources_shouldCompileSuccessfully()
 			throws IOException {
 		var singleFile = Paths.get("src", "test", "resources", "lexicons", "com.atproto.label.defs.json").toFile();
@@ -100,7 +113,7 @@ class ATProtocolCodeGeneratorImplTest {
 		}
 	}
 
-	public static File lexiconFileTestDirectory() throws IOException {
+	public static File lexiconFileTestDirectory() {
 		return Paths.get("src", "test", "resources", "lexicons").toFile();
 	}
 }

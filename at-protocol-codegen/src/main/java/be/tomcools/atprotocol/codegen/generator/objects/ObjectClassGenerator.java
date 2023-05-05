@@ -4,6 +4,8 @@ import static be.tomcools.atprotocol.codegen.generator.TypeResolver.determineTyp
 
 import be.tomcools.atprotocol.codegen.ATProtocolCodeGenerator;
 import be.tomcools.atprotocol.codegen.errors.ATPCodeGenException;
+import be.tomcools.atprotocol.codegen.generator.nameresolvers.ClassNameDefinition;
+import be.tomcools.atprotocol.codegen.generator.nameresolvers.NameResolver;
 import be.tomcools.atprotocol.codegen.lexicon.LexType;
 import com.squareup.javapoet.*;
 import java.io.File;
@@ -14,15 +16,24 @@ import org.apache.commons.lang3.StringUtils;
 
 public class ObjectClassGenerator {
 
-	public void generateClassForObject(ObjectInDocument doc, File outputDirectory) {
-		TypeSpec.Builder classfile = TypeSpec.classBuilder(doc.determineClassName()).addModifiers(Modifier.PUBLIC)
+	private final NameResolver nameResolver;
+
+	public ObjectClassGenerator(NameResolver nameResolver) {
+		this.nameResolver = nameResolver;
+	}
+
+	public void generateClassForObject(ObjectInDocument obj, File outputDirectory) {
+		ClassNameDefinition nameDefinition = nameResolver.resolve(obj);
+
+		TypeSpec.Builder classfile = TypeSpec.classBuilder(nameDefinition.className())
+				.addModifiers(Modifier.PUBLIC)
 				.addAnnotation(AnnotationSpec.builder(Generated.class)
 						.addMember("value", "$S", ATProtocolCodeGenerator.class.getName()).build());
 
 		MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder().addModifiers(Modifier.PUBLIC);
 
-		doc.obj().properties().forEach((k, v) -> {
-			TypeName type = determineType(doc.doc().id(), v);
+		obj.obj().properties().forEach((k, v) -> {
+			TypeName type = determineType(obj.doc().id(), v);
 			addProperty(classfile, type, k, v);
 
 			// create all args constructor
@@ -31,7 +42,7 @@ public class ObjectClassGenerator {
 
 		classfile.addMethod(constructorBuilder.build());
 
-		JavaFile javaFile = JavaFile.builder(doc.determinePackageName(), classfile.build()).build();
+		JavaFile javaFile = JavaFile.builder(nameDefinition.packageName(), classfile.build()).build();
 
 		try {
 			javaFile.writeTo(System.out);
