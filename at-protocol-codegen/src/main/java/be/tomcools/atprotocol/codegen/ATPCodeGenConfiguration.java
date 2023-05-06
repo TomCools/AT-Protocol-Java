@@ -3,8 +3,8 @@ package be.tomcools.atprotocol.codegen;
 import java.io.File;
 
 public class ATPCodeGenConfiguration {
-	private File source;
-	private File outputDirectory;
+	private final File source;
+	private final File outputDirectory;
 
 	private ATPCodeGenConfiguration(File source, File outputDirectory) {
 		this.source = source;

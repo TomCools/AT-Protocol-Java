@@ -1,14 +1,12 @@
 package be.tomcools.atprotocol.codegen.generator;
 
-import be.tomcools.atprotocol.codegen.generator.nameresolvers.NameResolver;
+import be.tomcools.atprotocol.codegen.generator.resolvers.NameResolver;
 import be.tomcools.atprotocol.codegen.lexicon.NSID;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
-public record GenerationContext(List<GenerationContextFile> files,
-								File outputDirectory,
-								NameResolver nameResolver) {
+public record GenerationContext(List<GenerationContextFile> files, File outputDirectory, NameResolver nameResolver) {
 
 	public Optional<GenerationContextFile> getForId(NSID id) {
 		return files.stream().filter(e -> e.doc().id().equals(id)).findFirst();

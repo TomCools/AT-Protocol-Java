@@ -18,7 +18,16 @@ _Note 2: This is currently a project in buildup. *Use of this code, either from 
 - *at-protocol-codegen-maven-plugin*: A Maven plugin which will generate the relevant Java Code during a Maven build.
 - *at-protocol-client*: A client, which can be used to connect to existing AT-Protocol servers, such as BlueSky Social Media. Mostly used to "Dogfood" the other modules for now.
 
-Todo: Add more information ;)
+=== TODO
+
+- Todo: Add more information ;)
+- Logging
+- Take constraints in schema into account.
+- UNION reference type
+- Create formatted subtypes (DID for example.)
+- Usage guide for the Maven Plugin
+- Usage guide for the Code Generator
+- Usage guide for the Code Client
 
 == Generated Code Guidelines
 
@@ -29,7 +38,3 @@ The most important ones are:
 - Objects: Generated as POJOs;
 - Query: Generated as Methods on the API class;
 - Procedures: Generated as Methods on the API class;
-
-=== Name Resolving
-
-The solving of names should be made configurable.

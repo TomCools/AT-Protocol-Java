@@ -1,0 +1,22 @@
+{
+  "id" : "6a7d059f-0afe-4111-92f1-916eb38c89c3",
+  "request" : {
+    "urlPath" : "/xrpc/com.atproto.server.createSession",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "matchesJsonPath" : "$.identifier"
+    },{
+      "matchesJsonPath" : "$.password"
+    }]
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{ \"did\": \"testdid\", \"handle\": \"testdid\", \"accessJwt\": \"FAKE_ACCESS_JWT\", \"refresh\": \"FAKE_REFRESH_JWT\"}",
+    "headers" : {
+      "Content-Type" : "application/json"
+    }
+  },
+  "uuid" : "6a7d059f-0afe-4111-92f1-916eb38c89c3",
+  "persistent" : true,
+  "insertionIndex" : 0
+}

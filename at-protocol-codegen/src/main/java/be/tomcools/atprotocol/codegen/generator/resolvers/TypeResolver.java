@@ -1,4 +1,4 @@
-package be.tomcools.atprotocol.codegen.generator;
+package be.tomcools.atprotocol.codegen.generator.resolvers;
 
 import be.tomcools.atprotocol.codegen.lexicon.LexRef;
 import be.tomcools.atprotocol.codegen.lexicon.LexType;
@@ -22,7 +22,7 @@ public class TypeResolver {
 		} else if (v.getClass() == LexRef.class) {
 			return determineReferenceClassName((LexRef) v, documentId);
 		} else {
-			return TypeName.get(String.class);
+			return TypeName.get(Object.class);
 		}
 	}
 

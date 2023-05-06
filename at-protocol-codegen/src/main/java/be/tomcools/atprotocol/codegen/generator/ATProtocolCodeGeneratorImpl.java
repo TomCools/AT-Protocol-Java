@@ -3,7 +3,7 @@ package be.tomcools.atprotocol.codegen.generator;
 import be.tomcools.atprotocol.codegen.ATPCodeGenConfiguration;
 import be.tomcools.atprotocol.codegen.ATProtocolCodeGenerator;
 import be.tomcools.atprotocol.codegen.errors.ATPCodeGenException;
-import be.tomcools.atprotocol.codegen.generator.nameresolvers.NameResolver;
+import be.tomcools.atprotocol.codegen.generator.resolvers.NameResolver;
 import be.tomcools.atprotocol.codegen.parser.LexiconParser;
 import be.tomcools.atprotocol.codegen.tools.ContextValidator;
 import com.github.wnameless.json.flattener.JsonFlattener;
@@ -21,9 +21,7 @@ public class ATProtocolCodeGeneratorImpl implements ATProtocolCodeGenerator {
 	public void generate(ATPCodeGenConfiguration configuration) {
 		List<GenerationContextFile> docs = readFiles(configuration.getSource());
 
-		GenerationContext context = new GenerationContext(docs,
-				configuration.getOutputDirectory(),
-				new NameResolver());
+		GenerationContext context = new GenerationContext(docs, configuration.getOutputDirectory(), new NameResolver());
 		validator.validate(context);
 
 		CodeGen gen = new CodeGen(context);
