@@ -12,6 +12,8 @@ _Note 1: This repository is not affiliated with the Bluesky PBLLC company. As we
 
 _Note 2: This is currently a project in buildup. *Use of this code, either from dependencies or by directly copying it is at own risk._*
 
+> This project is Work in Progress ;)
+
 == Artifacts
 
 - *at-protocol-codegen*: Generates Java code from the Lexicon files.
