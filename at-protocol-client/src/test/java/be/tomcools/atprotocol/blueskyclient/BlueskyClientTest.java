@@ -22,7 +22,7 @@ class BlueskyClientTest {
 
 		wmRuntimeInfo.getWireMock()
 				.verifyThat(RequestPatternBuilder.newRequestPattern().withUrl("/xrpc/com.atproto.repo.createRecord")
-						.withHeader("Authorization", equalTo("Bearer: FAKE_ACCESS_JWT"))
+						.withHeader("Authorization", equalTo("Bearer TEST_ACCESS_JWT"))
 						.withRequestBody(containing(TEST_STRING)));
 	}
 

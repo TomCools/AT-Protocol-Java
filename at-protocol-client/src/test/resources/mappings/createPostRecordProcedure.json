@@ -1,22 +1,22 @@
 {
-  "id" : "6a7d059f-0afe-4111-92f1-916eb38c89c3",
-  "request" : {
-    "urlPath" : "/xrpc/com.atproto.repo.createRecord",
-    "method" : "POST",
-    "bodyPatterns" : [ {
-      "matchesJsonPath" : "$.record.text"
-    },{
-      "matchesJsonPath" : "$[?(@.collection == 'app.bsky.feed.post')]"
-    }]
-  },
-  "response" : {
-    "status" : 200,
-    "body" : "{ \"uri\": \"TEST_URI\", \"cid\": \"TEST_CID\"}",
-    "headers" : {
-      "Content-Type" : "application/json"
+  "id": "6a7d059f-0afe-4111-92f1-916eb38c89c3",
+  "request": {
+    "urlPath": "/xrpc/com.atproto.repo.createRecord",
+    "method": "POST",
+    "headers": {
+      "Authorization": {
+        "equalTo": "Bearer TEST_ACCESS_JWT"
+      }
     }
   },
-  "uuid" : "6a7d059f-0afe-4111-92f1-916eb38c89c3",
-  "persistent" : true,
-  "insertionIndex" : 0
+  "response": {
+    "status": 200,
+    "body": "{ \"uri\": \"TEST_URI\", \"cid\": \"TEST_CID\"}",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "uuid": "6a7d059f-0afe-4111-92f1-916eb38c89c3",
+  "persistent": true,
+  "insertionIndex": 0
 }

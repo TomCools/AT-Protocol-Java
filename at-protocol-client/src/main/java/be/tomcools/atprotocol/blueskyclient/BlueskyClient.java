@@ -22,7 +22,7 @@ public class BlueskyClient {
 			String did = api.resolveHandle(configuration.getHandle()).getDid();
 			CreateSessionOutput createSessionOutput = api
 					.createSession(new CreateSessionInput(did, configuration.getPassword()));
-			api.setHeader("Authorization", "Bearer: " + createSessionOutput.getAccessJwt());
+			api.setHeader("Authorization", "Bearer " + createSessionOutput.getAccessJwt());
 
 			api.createRecord(
 					new CreateRecordInput(did, "app.bsky.feed.post", new PostRecord(text, LocalDate.now().toString())));
