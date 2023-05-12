@@ -39,8 +39,7 @@ public class ProcedureMethodGenerator {
 				.returns(outputClass)
 				.addStatement("//" + procedure.doc().id() + ": " + procedure.lexProcedure().description())
 				.addCode("""
-						     var jsonRequest = mapper.toJson(input);
-						     return executeRequest("POST", "/xrpc/%s", jsonRequest, %s.class);
+						     return executeRequest("POST", "/xrpc/%s", input, %s.class);
 						""".formatted(procedure.doc().id(), outputClass.simpleName()), ClassName.get(HttpRequest.class),
 						ClassName.get(URI.class), ClassName.get(Duration.class),
 						ClassName.get(HttpRequest.BodyPublishers.class), ClassName.get(HttpResponse.BodyHandlers.class))

@@ -39,8 +39,7 @@ class BlueskyClientTest {
 	}
 
 	private static BlueskyClient setupClient(WireMockRuntimeInfo wmRuntimeInfo) {
-		BlueskyConfiguration configuration = new BlueskyConfiguration("TomCools", "fakepass", "localhost",
-				wmRuntimeInfo.getHttpBaseUrl());
+		BlueskyConfiguration configuration = new BlueskyConfiguration("TomCools@localhost", "fakepass", wmRuntimeInfo.getHttpBaseUrl());
 		return new BlueskyClient(configuration);
 	}
 

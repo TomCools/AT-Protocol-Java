@@ -17,13 +17,14 @@ public class LexString implements LexType {
 	List<String> enumeration;
 	String constant;
 	List<String> knownValues;
+	String format;
 
 	public LexString() {
 		this.dynamicValues = new LinkedHashMap<>();
 	}
 
 	public LexString(String description, String defaultValue, Integer minLength, Integer maxLength,
-			List<String> enumeration, String constant, List<String> knownValues) {
+			List<String> enumeration, String constant, List<String> knownValues, String format) {
 		this.description = description;
 		this.defaultValue = defaultValue;
 		this.minLength = minLength;
@@ -32,6 +33,7 @@ public class LexString implements LexType {
 		this.constant = constant;
 		this.knownValues = knownValues;
 		this.dynamicValues = new LinkedHashMap<>();
+		this.format = format;
 	}
 
 	public String description() {
@@ -60,6 +62,10 @@ public class LexString implements LexType {
 
 	public List<String> getKnownValues() {
 		return knownValues;
+	}
+
+	public String getFormat() {
+		return format;
 	}
 
 	@JsonAnySetter

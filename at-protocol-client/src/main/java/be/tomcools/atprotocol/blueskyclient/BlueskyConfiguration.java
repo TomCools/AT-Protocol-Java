@@ -1,35 +1,28 @@
 package be.tomcools.atprotocol.blueskyclient;
 
 public class BlueskyConfiguration {
-	private String screenName;
-	private String serverName;
-	private String password;
+	private final String handle;
+	private final String password;
 	private final String serverUrl;
 
-	public BlueskyConfiguration(String screenName, String password, String serverName, String serverUrl) {
-		this.screenName = screenName;
-		this.serverName = serverName;
+	public BlueskyConfiguration(String handle, String password, String serverUrl) {
+		if(handle.startsWith("@")) {
+			throw new IllegalArgumentException("Use the handle without the @ symbol");
+		}
+		this.handle = handle;
 		this.password = password;
 		this.serverUrl = serverUrl;
 	}
 
-	public String getScreenName() {
-		return screenName;
-	}
-
-	public String getServerName() {
-		return serverName;
-	}
-
-	public String getServerUrl() {
-		return serverUrl;
+	public String getHandle() {
+		return handle;
 	}
 
 	public String getPassword() {
 		return password;
 	}
 
-	public String getHandle() {
-		return screenName.toLowerCase() + "." + serverName;
+	public String getServerUrl() {
+		return serverUrl;
 	}
 }

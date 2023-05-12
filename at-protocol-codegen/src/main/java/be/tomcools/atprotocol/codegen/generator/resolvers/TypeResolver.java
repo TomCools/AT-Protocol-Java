@@ -10,11 +10,14 @@ import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.TypeName;
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class TypeResolver {
 
 	public static TypeName determineType(NSID documentId, LexType v) {
 		if (v.getClass() == LexString.class) {
-			return TypeName.get(String.class);
+			return getStringSubtype((LexString) v);
 		} else if (v.getClass() == LexBoolean.class) {
 			return TypeName.get(Boolean.class);
 		} else if (v.getClass() == LexInteger.class) {
@@ -24,6 +27,21 @@ public class TypeResolver {
 		} else {
 			return TypeName.get(Object.class);
 		}
+	}
+
+	private static TypeName getStringSubtype(LexString v) {
+		String format = v.getFormat();
+		if(format == null) {
+			return TypeName.get(String.class);
+		}
+		if(format.equals("datetime")) {
+			return TypeName.get(LocalDateTime.class);
+		}
+		if(format.equals("date")) {
+			return TypeName.get(LocalDate.class);
+		}
+		// TODO DID and others;
+		return TypeName.get(String.class);
 	}
 
 	public static ClassName determineReferenceClassName(LexRef v, NSID doc) {
